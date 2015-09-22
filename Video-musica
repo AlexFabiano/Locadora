@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplo de Audio e Vídeo com HTML5</title>
+        <meta charset="UTF-8">
+        <style>
+
+            @font-face {
+                font-family: medievo1;
+                src: url('font/THEMINION.ttf');
+            }
+            
+            @font-face {
+                font-family: medievo2;
+                src: url('font/theminion.ttf');
+            }
+            @font-face {
+                font-family: medievoNum;
+                src: url('font/SketchMatch.ttf');
+            }
+            
+            h5{
+                font: x-large/150% "medievoNum",serif;
+                color: black;
+                margin-left: 10%;
+            }
+            
+            h1{
+                font: x-large/110% "medievo1","medievo2","medievo1",serif;
+                color: chocolate;
+            }
+            h1>span{            
+                font: 200% "medievoNum";
+                color: white;
+            }
+            body{
+                background-color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+        
+           Exemplo de Audio e Video Com HTML 5
+        -->
+        
+        <section style="margin-left: 30%">
+            <h1>Exmplo video<span>5</span></h1>
+            <h5>Video</h5>
+            <video  poster="img/design-grafico.jpg"  width="400" height="400" autoplay controls>
+                <source src="video/desabafo.mp4" type="video/mp4" />
+            </video> 
+            <h5>Exemplo Audio</h5>
+            <audio autoplay controls>
+                <source src="audio/som.mp3" type="audio/mp3" />
+            </audio>            
+        </section>
+    </body>
+</html>
