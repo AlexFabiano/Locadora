@@ -11,16 +11,16 @@ function cadastrarUsuario() {
     $sql = "INSERT INTO USUARIO (NOME,CPF,IDADE) "
             . "VALUES (:nome, :cpf, :idade)";
 
-    if ($_POST['idade'] == "") {
+    if ($_POST['cpf'] == "") {
         $cpf = '';
     } else {
-        $cpf = $_POST['idade'];
+        $cpf = $_POST['cpf'];
     }
 
     $query = $conexao->prepare($sql);
     $query->bindValue(':nome', $_POST['nome']);
-    $query->bindValue(':idade', $idade);
-    $query->bindValue(':cpf', $_POST['cpf']);
+    $query->bindValue(':cpf', $cpf);
+    $query->bindValue(':idade', $_POST['idade']);
     return $query->execute();
 }
 
