@@ -1,18 +1,5 @@
 
-$sql = "INSERT INTO USUARIO (USERNAME, SENHA, EMAIL) "
-            . "VALUES (:username, :senha, :email)";
 
-
-if ($_POST['email'] == "") {
-        $mail = '';
-    } else {
-        $mail = $_POST['email'];
-    }
-$query = $conexao->prepare($sql);
-    $query->bindValue(':username', $_POST['username']);
-    $query->bindValue(':email', $mail);
-    $query->bindValue(':senha', $_POST['senha']);
-    return $query->execute();
 
 <?php
 
