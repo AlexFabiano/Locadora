@@ -8,19 +8,25 @@ include_once 'includes/conexao.php';
 function cadastrarUsuario() {
     global $conexao;
 
-    $sql = "INSERT INTO USUARIO (NOME,CPF,IDADE) "
-            . "VALUES (:nome, :cpf, :idade)";
+    $sql = "INSERT INTO USUARIO (NOME,USERNAME,EMAIL,CPF,IDADE,LOGIN,SENHA,TIPO_USUARIO) "
+            . "VALUES (:nome, :username, :email, :cpf, :idade, :login, :senha, :tipo_usuario)";
 
-    if ($_POST['cpf'] == "") {
+    if ($_POST['username'] == "") {
         $cpf = '';
     } else {
-        $cpf = $_POST['cpf'];
+        $cpf = $_POST['username'];
     }
 
     $query = $conexao->prepare($sql);
     $query->bindValue(':nome', $_POST['nome']);
-    $query->bindValue(':cpf', $cpf);
+    $query->bindValue(':username', $username);
+    $query->bindValue(':email', $_POST['email']);
+    $query->bindValue(':cpf', $_POST['cpf']);
     $query->bindValue(':idade', $_POST['idade']);
+    $query->bindValue(':login', $_POST['login']);
+    $query->bindValue(':senha', $_POST['senha']);
+    $query->bindValue(':tipo_usuario', $_POST['tipo_usuario']);
+    
     return $query->execute();
 }
 
@@ -34,8 +40,13 @@ function atualizarUsuario() {
 
     $query = $conexao->prepare($sql);
     $query->bindValue(':nome', $_POST['nome']);
+    $query->bindValue(':username', $username);
+    $query->bindValue(':email', $_POST['email']);
     $query->bindValue(':cpf', $_POST['cpf']);
-    $query->bindValue(':idade', $_GET['idade']);
+    $query->bindValue(':idade', $_POST['idade']);
+    $query->bindValue(':login', $_POST['login']);
+    $query->bindValue(':senha', $_POST['senha']);
+    $query->bindValue(':tipo_usuario', $_POST['tipo_usuario']);
     return $query->execute();
 }
     
@@ -43,7 +54,7 @@ function atualizarUsuario() {
 function listarUsuario() {
     global $conexao;
 
-    $query = $conexao->query("SELECT * FROM USUARIO ");
+    $query = $conexao->query("SELECT * FROM USUARIOS ");
     $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     return $resultado;
 }
