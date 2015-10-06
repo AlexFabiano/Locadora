@@ -19,7 +19,7 @@ function cadastrarUsuario() {
 
     $query = $conexao->prepare($sql);
     $query->bindValue(':nome', $_POST['nome']);
-    $query->bindValue(':username', $username);
+    $query->bindValue(':username', $_POST['username']);
     $query->bindValue(':email', $_POST['email']);
     $query->bindValue(':cpf', $_POST['cpf']);
     $query->bindValue(':idade', $_POST['idade']);
